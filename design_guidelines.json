@@ -1,0 +1,120 @@
+{
+  "brand_identity": {
+    "name": "17Katas",
+    "theme": "dark",
+    "core_palette": {
+      "background": "#080808",
+      "primary": "#E8000D",
+      "text_primary": "#FFFFFF",
+      "text_secondary": "#A1A1AA",
+      "border": "#27272A",
+      "surface": "#121212"
+    },
+    "typography": {
+      "headings": {
+        "family": "Bebas Neue, sans-serif",
+        "url": "https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap",
+        "usage": "Use for all major headings (H1-H3). Uppercase ONLY. Letter-spacing: 1px."
+      },
+      "labels": {
+        "family": "Barlow Condensed, sans-serif",
+        "url": "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&display=swap",
+        "usage": "Use for overlines, labels, button text, and data metrics. Uppercase + tracking-widest."
+      },
+      "body": {
+        "family": "Manrope, sans-serif",
+        "url": "https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&display=swap",
+        "usage": "Use for paragraph text. Clean, legible, modern."
+      }
+    },
+    "visual_enhancers": {
+      "noise_texture": "url('https://grainy-gradients.vercel.app/noise.svg')",
+      "corner_cut": "polygon(0 0, 100% 0, 100% 75%, 90% 100%, 0 100%)",
+      "glass_blur": "backdrop-blur-xl bg-black/40 border border-white/10"
+    }
+  },
+  "layout_strategies": {
+    "grid_system": "Bento-style asymmetric grids. Use visible 1px borders (border-white/10) to define structure (Bloomberg terminal vibe).",
+    "spacing": "Generous. Minimum section padding py-24 or py-32. Gap-8 or gap-12 for grids.",
+    "alignment": "Left-aligned for text. Asymmetric positioning for visual tension. NO centered text blocks unless specifically for a 'Manifesto' quote.",
+    "container": "max-w-7xl mx-auto px-6 md:px-12"
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-[#E8000D] text-white hover:bg-white hover:text-black transition-all duration-300 font-barlow uppercase tracking-widest px-8 py-4 clip-path-corner-cut text-lg font-bold shadow-[0_0_20px_rgba(232,0,13,0.3)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]",
+      "secondary": "bg-transparent border border-white/20 text-white hover:border-[#E8000D] hover:text-[#E8000D] transition-all duration-300 font-barlow uppercase tracking-widest px-8 py-4 text-lg font-bold"
+    },
+    "inputs": {
+      "style": "bg-[#121212] border border-white/10 text-white placeholder:text-white/30 rounded-none focus:border-[#E8000D] focus:ring-0 focus:outline-none p-4 font-manrope transition-colors"
+    },
+    "cards": {
+      "style": "bg-[#0A0A0A] border border-white/10 p-8 hover:border-[#E8000D]/50 transition-colors group relative overflow-hidden"
+    }
+  },
+  "sections_guide": {
+    "navbar": {
+      "style": "fixed top-0 w-full z-50 bg-[#080808]/80 backdrop-blur-md border-b border-white/5",
+      "content": "Logo (Bebas Neue, text-3xl), Navigation Links (Barlow Condensed, uppercase), 'Join Beta' Button (Primary)"
+    },
+    "hero": {
+      "style": "min-h-screen flex flex-col justify-center relative overflow-hidden pt-20",
+      "typography": "H1: text-[12vw] leading-[0.85] font-bebas uppercase text-white mix-blend-difference. Sub: text-xl font-manrope text-gray-400 max-w-md.",
+      "effects": "Subtle red glow spot behind text. Noise overlay opacity-20.",
+      "background_image": "https://images.unsplash.com/photo-1760224254191-16a7cf659ad1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMHJlZCUyMGxhc2VyJTIwYmVhbSUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3MzI0ODcwMXww&ixlib=rb-4.1.0&q=85"
+    },
+    "ticker": {
+      "style": "bg-[#E8000D] py-4 transform -rotate-1 scale-105 border-y-4 border-black",
+      "content": "Infinite scrolling text. Font: Bebas Neue. Text: 'PERFORMANCE BASED • TRANSPARENT • INSTANT PAYOUTS • 17KATAS •'"
+    },
+    "stats": {
+      "style": "grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-white/10 border-y border-white/10 bg-[#0A0A0A]",
+      "item_style": "p-12 text-center group hover:bg-[#111] transition-colors",
+      "value_style": "text-6xl md:text-8xl font-bebas text-white group-hover:text-[#E8000D] transition-colors",
+      "label_style": "text-sm font-barlow tracking-[0.2em] text-gray-500 uppercase mt-2"
+    },
+    "how_it_works": {
+      "layout": "Grid cols-1 md:cols-3 gap-8",
+      "card_style": "border border-white/10 p-8 relative hover:border-[#E8000D] transition-colors",
+      "step_number": "text-[#E8000D] font-bebas text-6xl opacity-50 absolute top-4 right-4"
+    },
+    "manifesto": {
+      "style": "py-32 bg-[#080808] text-center",
+      "text": "text-4xl md:text-6xl font-bebas leading-tight max-w-4xl mx-auto uppercase text-white/90"
+    },
+    "waitlist": {
+      "layout": "Split screen. Left: Brands (Black bg). Right: Distributors (Dark Grey bg).",
+      "form_style": "minimalist stack. Input + 'JOIN' arrow button."
+    }
+  },
+  "assets": {
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1760224254191-16a7cf659ad1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwzfHxhYnN0cmFjdCUyMHJlZCUyMGxhc2VyJTIwYmVhbSUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3MzI0ODcwMXww&ixlib=rb-4.1.0&q=85",
+        "category": "texture_red_laser",
+        "usage": "Hero background or section divider overlay"
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1767642459780-1c2506f4654b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNTl8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMHJlZCUyMGxhc2VyJTIwYmVhbSUyMGRhcmslMjBiYWNrZ3JvdW5kfGVufDB8fHx8MTc3MzI0ODcwMXww&ixlib=rb-4.1.0&q=85",
+        "category": "texture_geometric_red",
+        "usage": "Abstract background for 'Why Us' section"
+      }
+    ],
+    "icons": "Use 'lucide-react' with thin stroke width (1.5px) to match the elegant technical feel."
+  },
+  "technical_instructions": [
+    "UPDATE tailwind.config.js to include fonts: fontFamily: { bebas: ['Bebas Neue', 'sans-serif'], barlow: ['Barlow Condensed', 'sans-serif'], manrope: ['Manrope', 'sans-serif'] }.",
+    "ADD colors to tailwind config: accent-red: '#E8000D', deep-black: '#080808'.",
+    "IMPORT Google Fonts in index.css.",
+    "USE 'framer-motion' for scroll reveal (fade up) and ticker animation.",
+    "ENSURE mobile responsiveness. On mobile, grid-cols-1 and stack elements.",
+    "ADD 'clip-path' utility class in tailwind or css for the cut-corner buttons.",
+    "IMPLEMENT 'lenis' for smooth scrolling if possible, or standard smooth behavior."
+  ],
+  "universal_guidelines": [
+    "NO gradients except subtle radial glows.",
+    "NO rounded corners on main containers (Buttons can have cut corners, inputs sharp).",
+    "NO generic 'Inter' font.",
+    "Use data-testid for all interactive elements.",
+    "Maintain strict contrast ratios (White text on Black bg)."
+  ]
+}
