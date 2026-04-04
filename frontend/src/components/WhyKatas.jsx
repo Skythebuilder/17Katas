@@ -42,7 +42,7 @@ const WhyKatas = () => {
         </div>
 
         {/* Feature grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5">
           {FEATURES.map((feat, i) => {
             const Icon = feat.icon;
             return (
