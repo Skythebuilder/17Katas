@@ -30,7 +30,7 @@ const Hero = ({ onJoinBrand, onJoinDistributor }) => {
       >
         {/* Overline label */}
         <p className="font-barlow text-[#E8000D] uppercase tracking-[0.35em] text-sm mb-6">
-          India&apos;s First Performance-Based Platform
+          India&apos;s First Content Distribution Infrastructure
         </p>
 
         {/* Giant headline */}
@@ -47,7 +47,7 @@ const Hero = ({ onJoinBrand, onJoinDistributor }) => {
 
         {/* Subheadline */}
         <p className="font-manrope text-white/55 text-lg md:text-xl max-w-lg mb-12 leading-relaxed">
-          India&apos;s first performance-based distribution platform.
+          Distribution is the Real Moat.
           <br />
           <strong className="text-white/80 font-medium">Pay for results. Not promises.</strong>
         </p>
