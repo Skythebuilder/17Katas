@@ -1,30 +1,21 @@
 import { useScrollReveal } from "../hooks/useScrollReveal";
-import { Ban, Zap, Eye, RotateCcw } from "lucide-react";
+import { Ban, Zap, Eye } from "lucide-react";
 
 const FEATURES = [
   {
     icon: Ban,
     title: "No More Paying for Hope",
-    desc: "Every rupee you spend is tied to a verified view. Zero wasted impressions. Zero guesswork. Performance only.",
-    tag: "Pay-for-performance model",
+    desc: "Results only. No retainers. No excuses.",
   },
   {
     icon: Zap,
     title: "Same Day Payouts",
-    desc: "No more waiting 30–40 days to get paid. When a view is verified, payout is triggered automatically. That day.",
-    tag: "₹0 day payout delay",
+    desc: "You perform. You get paid. That day.",
   },
   {
     icon: Eye,
     title: "Full Transparency",
-    desc: "Both brands and distributors have access to the same real-time dashboard. Views, spend, earnings — all live.",
-    tag: "Real-time dashboard",
-  },
-  {
-    icon: RotateCcw,
-    title: "Pull Out Anytime",
-    desc: "Brands can withdraw their unused campaign budget at any time. Your capital is never locked in arbitrarily.",
-    tag: "100% refundable unused budget",
+    desc: "Everyone sees everything. Always.",
   },
 ];
 
@@ -74,14 +65,9 @@ const WhyKatas = () => {
                   {feat.title}
                 </h3>
 
-                <p className="font-manrope text-white/45 text-sm leading-relaxed mb-6">
+                <p className="font-manrope text-white/45 text-sm leading-relaxed">
                   {feat.desc}
                 </p>
-
-                {/* Tag */}
-                <span className="font-barlow text-[#E8000D]/60 uppercase tracking-widest text-xs">
-                  — {feat.tag}
-                </span>
 
                 {/* Corner decoration */}
                 <div className="absolute top-0 right-0 w-16 h-16 border-t border-r border-white/5 group-hover:border-[#E8000D]/20 transition-colors duration-300" />

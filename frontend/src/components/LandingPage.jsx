@@ -2,7 +2,6 @@ import Navbar from "./Navbar";
 import Hero from "./Hero";
 import Ticker from "./Ticker";
 import Stats from "./Stats";
-import HowItWorks from "./HowItWorks";
 import WhyKatas from "./WhyKatas";
 import WaitlistForms from "./WaitlistForms";
 import Manifesto from "./Manifesto";
@@ -19,7 +18,6 @@ const LandingPage = () => {
       <Hero onJoinBrand={scrollToWaitlist} onJoinDistributor={scrollToWaitlist} />
       <Ticker />
       <Stats />
-      <HowItWorks />
       <WhyKatas />
       <WaitlistForms />
       <Manifesto />
