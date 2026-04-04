@@ -4,6 +4,19 @@ import { useScrollReveal } from "../hooks/useScrollReveal";
 
 const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
+// Swap this URL in .env (REACT_APP_SHEETS_WEBHOOK_URL) to go live
+const SHEETS_WEBHOOK = process.env.REACT_APP_SHEETS_WEBHOOK_URL;
+
+const postToSheets = (payload) => {
+  if (!SHEETS_WEBHOOK || SHEETS_WEBHOOK.startsWith("REPLACE")) return;
+  fetch(SHEETS_WEBHOOK, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ...payload, submitted_at: new Date().toISOString() }),
+  }).catch(() => {});
+};
+
 const BUDGET_OPTIONS = [
   { value: "", label: "Select Budget Range" },
   { value: "50K-1L", label: "₹50K – ₹1L" },
@@ -47,6 +60,7 @@ const BrandForm = () => {
     setStatus("loading");
     try {
       await axios.post(`${API}/waitlist/brand`, form);
+      postToSheets({ ...form, type: "brand" });
       setStatus("success");
       setForm({ name: "", contact: "", email: "", brand_name: "", budget_range: "" });
     } catch {
@@ -143,7 +157,7 @@ const BrandForm = () => {
             data-testid="brand-form-success"
             className="font-barlow text-[#E8000D] uppercase tracking-wider text-sm"
           >
-            You&apos;re on the list. We&apos;ll be in touch.
+            You&apos;re in. We&apos;ll be in touch.
           </p>
         )}
         {(status === "error" || status === "error-validation") && (
@@ -185,6 +199,7 @@ const DistributorForm = () => {
     setStatus("loading");
     try {
       await axios.post(`${API}/waitlist/distributor`, form);
+      postToSheets({ ...form, type: "distributor" });
       setStatus("success");
       setForm({ name: "", contact: "", email: "", handle: "", primary_skill: "" });
     } catch {
@@ -281,7 +296,7 @@ const DistributorForm = () => {
             data-testid="dist-form-success"
             className="font-barlow text-[#E8000D] uppercase tracking-wider text-sm"
           >
-            You&apos;re on the list. Get ready to earn.
+            Welcome to the network. Stay ready.
           </p>
         )}
         {(status === "error" || status === "error-validation") && (
