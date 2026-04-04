@@ -33,7 +33,7 @@ const FormField = ({ label, children }) => (
 );
 
 const BrandForm = () => {
-  const [form, setForm] = useState({ name: "", email: "", brand_name: "", budget_range: "" });
+  const [form, setForm] = useState({ name: "", contact: "", email: "", brand_name: "", budget_range: "" });
   const [status, setStatus] = useState(null); // null | 'loading' | 'success' | 'error'
 
   const handleChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
@@ -48,7 +48,7 @@ const BrandForm = () => {
     try {
       await axios.post(`${API}/waitlist/brand`, form);
       setStatus("success");
-      setForm({ name: "", email: "", brand_name: "", budget_range: "" });
+      setForm({ name: "", contact: "", email: "", brand_name: "", budget_range: "" });
     } catch {
       setStatus("error");
     }
@@ -79,6 +79,17 @@ const BrandForm = () => {
             value={form.name}
             onChange={handleChange}
             placeholder="Rahul Sharma"
+            className="form-input"
+          />
+        </FormField>
+
+        <FormField label="Contact Details">
+          <input
+            data-testid="brand-contact-input"
+            name="contact"
+            value={form.contact}
+            onChange={handleChange}
+            placeholder="Phone / WhatsApp / Preferred Contact"
             className="form-input"
           />
         </FormField>
@@ -160,7 +171,7 @@ const BrandForm = () => {
 };
 
 const DistributorForm = () => {
-  const [form, setForm] = useState({ name: "", email: "", handle: "", primary_skill: "" });
+  const [form, setForm] = useState({ name: "", contact: "", email: "", handle: "", primary_skill: "" });
   const [status, setStatus] = useState(null);
 
   const handleChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
@@ -175,7 +186,7 @@ const DistributorForm = () => {
     try {
       await axios.post(`${API}/waitlist/distributor`, form);
       setStatus("success");
-      setForm({ name: "", email: "", handle: "", primary_skill: "" });
+      setForm({ name: "", contact: "", email: "", handle: "", primary_skill: "" });
     } catch {
       setStatus("error");
     }
@@ -206,6 +217,17 @@ const DistributorForm = () => {
             value={form.name}
             onChange={handleChange}
             placeholder="Priya Mehta"
+            className="form-input"
+          />
+        </FormField>
+
+        <FormField label="Contact Details">
+          <input
+            data-testid="dist-contact-input"
+            name="contact"
+            value={form.contact}
+            onChange={handleChange}
+            placeholder="Phone / WhatsApp / Preferred Contact"
             className="form-input"
           />
         </FormField>
@@ -293,7 +315,7 @@ const WaitlistForms = () => {
     <section
       data-testid="waitlist-section"
       id="waitlist"
-      className="py-28 md:py-36 bg-[#080808]"
+      className="pt-16 pb-28 md:pt-20 md:pb-36 bg-[#080808]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Section header */}
