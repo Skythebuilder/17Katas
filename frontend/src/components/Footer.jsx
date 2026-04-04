@@ -20,7 +20,7 @@ const Footer = () => {
           data-testid="footer-copyright"
           className="font-manrope text-white/20 text-xs text-center"
         >
-          &copy; 2025 17Katas — Content Distribution Infrastructure
+          &copy; 2026 17Katas — Content Distribution Infrastructure
         </div>
       </div>
     </footer>
