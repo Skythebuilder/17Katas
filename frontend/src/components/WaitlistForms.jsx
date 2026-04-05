@@ -41,14 +41,14 @@ const FormField = ({ label, children }) => (
 );
 
 const BrandForm = () => {
-  const [form, setForm] = useState({ name: "", contact: "", email: "", brand_name: "", budget_range: "" });
+  const [form, setForm] = useState({ name: "", contact: "", email: "", brand: "", budget: "" });
   const [status, setStatus] = useState(null);
 
   const handleChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.brand_name || !form.budget_range) {
+    if (!form.name || !form.email || !form.brand || !form.budget) {
       setStatus("error-validation");
       return;
     }
@@ -56,7 +56,7 @@ const BrandForm = () => {
     try {
       await postToSheets({ ...form, type: "Brand" });
       setStatus("success");
-      setForm({ name: "", contact: "", email: "", brand_name: "", budget_range: "" });
+      setForm({ name: "", contact: "", email: "", brand: "", budget: "" });
     } catch {
       setStatus("error");
     }
@@ -117,8 +117,8 @@ const BrandForm = () => {
         <FormField label="Brand Name">
           <input
             data-testid="brand-brand-name-input"
-            name="brand_name"
-            value={form.brand_name}
+            name="brand"
+            value={form.brand}
             onChange={handleChange}
             placeholder="Your Brand"
             className="form-input"
@@ -129,8 +129,8 @@ const BrandForm = () => {
           <div className="relative">
             <select
               data-testid="brand-budget-select"
-              name="budget_range"
-              value={form.budget_range}
+              name="budget"
+              value={form.budget}
               onChange={handleChange}
               className="form-select"
             >
@@ -179,14 +179,14 @@ const BrandForm = () => {
 };
 
 const DistributorForm = () => {
-  const [form, setForm] = useState({ name: "", contact: "", email: "", handle: "", primary_skill: "" });
+  const [form, setForm] = useState({ name: "", contact: "", email: "", handle: "", skill: "" });
   const [status, setStatus] = useState(null);
 
   const handleChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!form.name || !form.email || !form.handle || !form.primary_skill) {
+    if (!form.name || !form.email || !form.handle || !form.skill) {
       setStatus("error-validation");
       return;
     }
@@ -194,7 +194,7 @@ const DistributorForm = () => {
     try {
       await postToSheets({ ...form, type: "Distributor" });
       setStatus("success");
-      setForm({ name: "", contact: "", email: "", handle: "", primary_skill: "" });
+      setForm({ name: "", contact: "", email: "", handle: "", skill: "" });
     } catch {
       setStatus("error");
     }
@@ -267,8 +267,8 @@ const DistributorForm = () => {
           <div className="relative">
             <select
               data-testid="dist-skill-select"
-              name="primary_skill"
-              value={form.primary_skill}
+              name="skill"
+              value={form.skill}
               onChange={handleChange}
               className="form-select"
             >
