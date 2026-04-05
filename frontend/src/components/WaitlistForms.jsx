@@ -1,20 +1,15 @@
 import { useState } from "react";
-import axios from "axios";
 import { useScrollReveal } from "../hooks/useScrollReveal";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const SHEETS_WEBHOOK = "https://script.google.com/macros/s/AKfycbwnCM_HaPvSlnp-N96ObaHse2gNgltSJVwLHzm1_dGskvJKjYLzIVkuF3DIjEP0qQQk8Q/exec";
 
-// Swap this URL in .env (REACT_APP_SHEETS_WEBHOOK_URL) to go live
-const SHEETS_WEBHOOK = process.env.REACT_APP_SHEETS_WEBHOOK_URL;
-
-const postToSheets = (payload) => {
-  if (!SHEETS_WEBHOOK || SHEETS_WEBHOOK.startsWith("REPLACE")) return;
-  fetch(SHEETS_WEBHOOK, {
+const postToSheets = async (payload) => {
+  await fetch(SHEETS_WEBHOOK, {
     method: "POST",
     mode: "no-cors",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ ...payload, submitted_at: new Date().toISOString() }),
-  }).catch(() => {});
+  });
 };
 
 const BUDGET_OPTIONS = [
@@ -47,7 +42,7 @@ const FormField = ({ label, children }) => (
 
 const BrandForm = () => {
   const [form, setForm] = useState({ name: "", contact: "", email: "", brand_name: "", budget_range: "" });
-  const [status, setStatus] = useState(null); // null | 'loading' | 'success' | 'error'
+  const [status, setStatus] = useState(null);
 
   const handleChange = (e) => setForm((p) => ({ ...p, [e.target.name]: e.target.value }));
 
@@ -59,8 +54,7 @@ const BrandForm = () => {
     }
     setStatus("loading");
     try {
-      await axios.post(`${API}/waitlist/brand`, form);
-      postToSheets({ ...form, type: "brand" });
+      await postToSheets({ ...form, type: "Brand" });
       setStatus("success");
       setForm({ name: "", contact: "", email: "", brand_name: "", budget_range: "" });
     } catch {
@@ -157,7 +151,7 @@ const BrandForm = () => {
             data-testid="brand-form-success"
             className="font-barlow text-[#E8000D] uppercase tracking-wider text-sm"
           >
-            You&apos;re in. We&apos;ll be in touch.
+            You're in. We'll be in touch.
           </p>
         )}
         {(status === "error" || status === "error-validation") && (
@@ -198,8 +192,7 @@ const DistributorForm = () => {
     }
     setStatus("loading");
     try {
-      await axios.post(`${API}/waitlist/distributor`, form);
-      postToSheets({ ...form, type: "distributor" });
+      await postToSheets({ ...form, type: "Distributor" });
       setStatus("success");
       setForm({ name: "", contact: "", email: "", handle: "", primary_skill: "" });
     } catch {
@@ -333,7 +326,6 @@ const WaitlistForms = () => {
       className="pt-16 pb-16 md:pt-20 md:pb-24 bg-[#080808]"
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12">
-        {/* Section header */}
         <div
           ref={ref}
           className={`reveal ${visible ? "revealed" : ""} mb-14`}
@@ -345,11 +337,10 @@ const WaitlistForms = () => {
             Join The Waitlist
           </h2>
           <p className="font-manrope text-white/40 text-base mt-4 max-w-lg">
-            We&apos;re onboarding in batches. Get in early — limited spots for the first cohort.
+            We're onboarding in batches. Get in early — limited spots for the first cohort.
           </p>
         </div>
 
-        {/* Dual forms */}
         <div
           className={`reveal ${visible ? "revealed" : ""} grid grid-cols-1 md:grid-cols-2 gap-6`}
           style={{ transitionDelay: "0.15s" }}
