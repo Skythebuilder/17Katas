@@ -36,6 +36,7 @@
     font-family: "Manrope", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
   }
   html {
     scroll-behavior: smooth;
@@ -80,7 +81,6 @@ body::before {
   box-shadow: 0 0 40px rgba(232, 0, 13, 0.5);
   transform: translateY(-2px);
 }
-
 .btn-secondary {
   display: inline-flex;
   align-items: center;
@@ -132,19 +132,28 @@ body::before {
 }
 
 /* ─── FORM INPUTS ─── */
+.form-label {
+  display: block;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 8px;
+}
 .form-input {
   background-color: #0d0d0d;
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: #ffffff;
   font-family: "Manrope", sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   padding: 0.875rem 1rem;
   width: 100%;
   outline: none;
   transition: border-color 0.3s ease;
 }
 .form-input::placeholder {
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.25);
 }
 .form-input:focus {
   border-color: #E8000D;
@@ -154,7 +163,7 @@ body::before {
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: #ffffff;
   font-family: "Manrope", sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   padding: 0.875rem 1rem;
   width: 100%;
   outline: none;
@@ -186,4 +195,234 @@ body::before {
   .stat-item + .stat-item {
     border-left: 1px solid rgba(255, 255, 255, 0.08);
   }
+}
+
+/* ─── GLOBAL RESPONSIVE FIXES ─── */
+
+/* Make all inline small text more readable at desktop scale */
+.text-readable {
+  font-size: 14px;
+  line-height: 1.7;
+}
+@media (min-width: 1024px) {
+  .text-readable {
+    font-size: 15px;
+  }
+}
+
+/* Responsive two-column layout helper */
+.layout-two-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px;
+}
+@media (min-width: 768px) {
+  .layout-two-col {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    padding: 24px 40px;
+    gap: 32px;
+  }
+}
+
+/* Responsive page padding */
+.page-pad {
+  padding: 16px;
+  padding-bottom: 100px; /* space for mobile bottom nav */
+}
+@media (min-width: 768px) {
+  .page-pad {
+    padding: 24px 32px;
+    padding-bottom: 60px;
+  }
+}
+
+/* Responsive grid — collapses to 2 cols on mobile */
+.grid-stats-4 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(255, 255, 255, 0.04);
+}
+@media (min-width: 768px) {
+  .grid-stats-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Responsive campaign grid */
+.grid-campaigns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 900px) {
+  .grid-campaigns {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ─── MOBILE BOTTOM NAV ─── */
+.mobile-bottom-nav {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #080808;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 100;
+}
+@media (min-width: 768px) {
+  .mobile-bottom-nav {
+    display: none;
+  }
+}
+.mobile-bottom-nav-item {
+  flex: 1;
+  padding: 12px 6px;
+  text-align: center;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.25);
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.mobile-bottom-nav-item.active {
+  color: #E8000D;
+}
+.mobile-bottom-nav-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #E8000D;
+}
+
+/* ─── HIDE DESKTOP NAV LINKS ON MOBILE ─── */
+.desktop-nav-links {
+  display: none;
+}
+@media (min-width: 768px) {
+  .desktop-nav-links {
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* ─── HAMBURGER MENU ─── */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+@media (min-width: 768px) {
+  .hamburger {
+    display: none;
+  }
+}
+.hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s;
+}
+
+/* ─── MOBILE MENU OVERLAY ─── */
+.mobile-menu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: #080808;
+  z-index: 200;
+  padding: 24px;
+  flex-direction: column;
+  gap: 8px;
+}
+.mobile-menu.open {
+  display: flex;
+}
+@media (min-width: 768px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
+.mobile-menu-item {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 40px;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+.mobile-menu-item:hover,
+.mobile-menu-item.active {
+  color: #fff;
+}
+.mobile-menu-close {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* ─── RESPONSIVE TYPOGRAPHY SCALE ─── */
+/* These override inline fontSize styles in components at larger screens */
+@media (min-width: 1280px) {
+  .desc-text {
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+  }
+  .meta-text {
+    font-size: 13px !important;
+  }
+  .label-text {
+    font-size: 12px !important;
+  }
+}
+
+/* ─── TOUCH TARGET SIZES ─── */
+@media (max-width: 767px) {
+  .btn-primary,
+  .btn-secondary {
+    padding: 1rem 1.5rem;
+    font-size: 0.9rem;
+    min-height: 52px;
+  }
+  /* Ensure tap targets are at least 44px */
+  button, a, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  /* Full width buttons on mobile */
+  .btn-primary.mobile-full,
+  .btn-secondary.mobile-full {
+    width: 100%;
+  }
+}
+
+/* ─── SCROLLBAR HIDE FOR MOBILE SLIDERS ─── */
+.scroll-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scroll-hide::-webkit-scrollbar {
+  display: none;
 }
